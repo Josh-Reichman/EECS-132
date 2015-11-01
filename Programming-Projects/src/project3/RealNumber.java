@@ -14,7 +14,7 @@ public class RealNumber {
 
 	public static void main(String[] args)
 	{	
-		System.out.println(new RealNumber(6, false, new byte[]{0,0,1,4,1,3,2,0,0,0}).toString());
+		System.out.println(new RealNumber(7, false, new byte[]{1,4,1,3,2}).equals(new RealNumber(7, false, new byte[]{1,4,1,3,2,0,0})));
 	}
 	/**
 	 * @param precision
@@ -95,23 +95,23 @@ public class RealNumber {
 						if(this.getPrecision()-1==i){
 							sb.append(".");
 						}
-						else{
-							//sb.append(".");
+						i+= currentZero -1;
+						if(this.getData()[i]-1==0){
+							sb.append(".");
 						}
-						i+= currentZero -2;
-
 					}
 					else{
 						currentZero++;
 					}
 				}
 				else{
-					if(this.getPrecision() != i ){
-						sb.append(this.getData()[i]);
-					}
-					else if(this.getPrecision() == i){
+					if(this.getPrecision() == i){
 						sb.append(this.getData()[i]+".");
 					}
+					else if(this.getPrecision() != i){
+						sb.append(this.getData()[i]);
+					}
+					
 				}
 			}
 		}
@@ -138,7 +138,7 @@ public class RealNumber {
 	 if (!(o instanceof RealNumber)){
 		 throw new ClassCastException();
 	 }
-	 return true;
+	 return this.toString().equals(o.toString());
 	 
  }
 /*
