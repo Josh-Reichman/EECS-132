@@ -14,7 +14,7 @@ public class RealNumber {
 
 	public static void main(String[] args)
 	{	
-		System.out.print(new RealNumber(5, false, new byte[]{5,1,4,1,3}));
+		System.out.print(new RealNumber(7, false, new byte[]{5,1,4,1,3}));
 	}
 	/**
 	 * @param precision
@@ -68,10 +68,14 @@ public class RealNumber {
 		StringBuilder sb = new StringBuilder();
 		if(this.isNegative())
 			sb.append("-");
-
-		if(this.getPrecision() > this.getData().length - 1){ 
+		if (this.getPrecision() == 0) {
+			for (int i = this.getData().length - 1; i >= 0; i--) {
+				sb.append(this.getData()[i]);
+			}
+		}
+		else if(this.getPrecision() > this.getData().length - 1){ 
 			sb.append(".");
-			for(int i = this.getPrecision()-1; i > 0; i--){
+			for(int i = this.getPrecision()-1; i >= 0; i--){
 				if(i > this.getData().length-1){
 					sb.append("0");
 				}
