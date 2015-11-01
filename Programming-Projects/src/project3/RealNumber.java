@@ -14,7 +14,7 @@ public class RealNumber {
 
 	public static void main(String[] args)
 	{	
-		System.out.print(new RealNumber(7, false, new byte[]{5,1,4,1,3}));
+		System.out.println(new RealNumber(6, false, new byte[]{0,0,1,4,1,3,2,0,0,0}).toString());
 	}
 	/**
 	 * @param precision
@@ -80,30 +80,48 @@ public class RealNumber {
 					sb.append("0");
 				}
 				else {
-					sb.append(this.getData()[i-1]);
+					sb.append(this.getData()[i]);
 				}
 			}
 
 		}
 		else if(this.getPrecision() < this.getData().length - 1){ //overflow data goes past decimal point
 			boolean leadingZero = true;
-			int currentNumber = 0;
-			for(int i = this.getPrecision() -1; i >= 0; i--){
-				if(leadingZero && (this.getData()[this.getPrecision()-i] != 0)){
-					leadingZero = false;
+			int currentZero = 0;
+			for(int i = this.getData().length - 1;i >= 0; i--){
+				if(leadingZero){
+					if(leadingZero && ((this.getData()[i] != 0)||(this.getPrecision()==i))){
+						leadingZero = false;
+						if(this.getPrecision()-1==i){
+							sb.append(".");
+						}
+						else{
+							//sb.append(".");
+						}
+						i+= currentZero -2;
+
+					}
+					else{
+						currentZero++;
+					}
 				}
-				if(!leadingZero){
-					if(this.getPrecision() - currentNumber != this.getData().length){
+				else{
+					if(this.getPrecision() != i ){
 						sb.append(this.getData()[i]);
 					}
-					else if(this.getPrecision() - currentNumber == this.getData().length){
-						sb.append("." + this.getData()[i]);
+					else if(this.getPrecision() == i){
+						sb.append(this.getData()[i]+".");
 					}
-					currentNumber++;
 				}
 			}
-
 		}
+		else{
+			sb.append(".");
+			for (int i = this.getData().length - 2; i >= 0; i--) {
+				sb.append(this.getData()[i]);
+			}
+		}
+
 		return sb.toString();
 	}
 	/*
@@ -114,12 +132,16 @@ public class RealNumber {
  public int compareTo(RealNumber value) {
 
  }
-
+*/
  @Override
- public boolean equals(Object o) {
-
+ public boolean equals(Object o) throws ClassCastException{
+	 if (!(o instanceof RealNumber)){
+		 throw new ClassCastException();
+	 }
+	 return true;
+	 
  }
-
+/*
  public static RealNumber add(RealNumber value1, RealNumber value2) {
 
  }
