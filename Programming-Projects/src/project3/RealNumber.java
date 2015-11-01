@@ -111,7 +111,7 @@ public class RealNumber {
 					else if(this.getPrecision() != i){
 						sb.append(this.getData()[i]);
 					}
-					
+
 				}
 			}
 		}
@@ -132,34 +132,48 @@ public class RealNumber {
  public int compareTo(RealNumber value) {
 
  }
-*/
- @Override
- public boolean equals(Object o) throws ClassCastException{
-	 if (!(o instanceof RealNumber)){
-		 throw new ClassCastException();
-	 }
-	 return this.toString().equals(o.toString());
-	 
- }
-/*
- public static RealNumber add(RealNumber value1, RealNumber value2) {
-
- }
-
- public static RealNumber subtract(RealNumber value1, RealNumber value2) {
-
- }
-
- public static RealNumber multiply(RealNumber value1, RealNumber value2) {
-
- }
-
- public static RealNumber divide(RealNumber value1, RealNumber value2) {
-
- }
-
- public static RealNumber squareRoot(RealNumber value) {
-
- }
 	 */
+	@Override
+	public boolean equals(Object o) throws ClassCastException{
+		if (!(o instanceof RealNumber)){
+			throw new ClassCastException();
+		}
+		return this.toString().equals(o.toString());
+
+	}
+
+	public static RealNumber add(RealNumber value1, RealNumber value2) {
+		int precision;
+		boolean isNegative;
+		byte[] addData;
+		if (value1.getPrecision() >=value2.getPrecision())
+			precision = value1.getPrecision();
+		else
+			precision = value2.getPrecision();
+		if(value1.getData().length-precision >= value2.getData().length-precision)
+			addData = new byte[value1.getData().length + precision];
+		else
+			addData = new byte[value2.getData().length + precision];
+		for(int i = addData.length - 1; i >= 0; i--){
+			
+		}
+		//return new RealNumber(precision,isNegative,addData[]);
+	}
+/*
+	public static RealNumber subtract(RealNumber value1, RealNumber value2) {
+
+	}
+
+	public static RealNumber multiply(RealNumber value1, RealNumber value2) {
+
+	}
+
+	public static RealNumber divide(RealNumber value1, RealNumber value2) {
+
+	}
+
+	public static RealNumber squareRoot(RealNumber value) {
+
+	}
+*/
 }
