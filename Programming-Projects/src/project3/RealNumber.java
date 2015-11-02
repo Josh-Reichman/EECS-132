@@ -14,7 +14,8 @@ public class RealNumber {
 
 	public static void main(String[] args)
 	{	
-		System.out.println(new RealNumber(7, false, new byte[]{1,4,1,3,2}).equals(new RealNumber(7, false, new byte[]{1,4,1,3,2,0,0})));
+		RealNumber test = new RealNumber(12, false, new byte[]{1,2});
+		System.out.println(test.getData());
 	}
 	/**
 	 * @param precision
@@ -45,21 +46,21 @@ public class RealNumber {
 	 * @return Precision
 	 */
 	public int getPrecision() {
-		return precision;
+		return this.precision;
 	}
 
 	/**
 	 * @return isNegative
 	 */
 	public boolean isNegative() {
-		return isNegative;
+		return this.isNegative;
 	}
 
 	/**
 	 * @return data
 	 */
 	public byte[] getData() {
-		return data;
+		return this.data;
 	}
 
 	@Override
@@ -141,7 +142,7 @@ public class RealNumber {
 		return this.toString().equals(o.toString());
 
 	}
-
+/*
 	public static RealNumber add(RealNumber value1, RealNumber value2) {
 		int precision;
 		boolean isNegative;
@@ -159,6 +160,7 @@ public class RealNumber {
 		}
 		//return new RealNumber(precision,isNegative,addData[]);
 	}
+	*/
 /*
 	public static RealNumber subtract(RealNumber value1, RealNumber value2) {
 
