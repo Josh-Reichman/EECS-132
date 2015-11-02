@@ -12,6 +12,12 @@ public class RealNumber {
 	private boolean isNegative;
 	private byte[] data;
 
+	public static void main(String[] args)
+	{	
+		RealNumber test = new RealNumber(5, false, new byte[]{1,2});
+		RealNumber test2 = new RealNumber(5, false, new byte[]{1,2,0});
+		System.out.println(test.equals("hhththth"));
+	}
 	/**
 	 * @param precision
 	 * @param isNegative
@@ -22,13 +28,15 @@ public class RealNumber {
 		this.isNegative = isNegative;
 		if (precision > data.length) {
 			this.data = new byte[precision];
-			for(int i = data.length; i <this.data.length; i++){
+			for(int i = 0; i < data.length; i++){
 				this.data[i] = data[i];
 			}
-			for(int i = data.length; i < this.data.length;i++){ //check this out
-				this.data[i] = 0; 
+			for (int i = data.length; i < this.data.length; i++) {
+				this.data[i] = 0;
 			}
 		}
+		else
+			this.data = data;
 	}
 
 	public RealNumber(int precision, String value) {
@@ -39,66 +47,128 @@ public class RealNumber {
 	 * @return Precision
 	 */
 	public int getPrecision() {
-		return precision;
+		return this.precision;
 	}
 
 	/**
 	 * @return isNegative
 	 */
 	public boolean isNegative() {
-		return isNegative;
+		return this.isNegative;
 	}
 
 	/**
 	 * @return data
 	 */
 	public byte[] getData() {
-		return data;
+		return this.data;
 	}
 
 	@Override
 	public String toString() {
-		
+
 		StringBuilder sb = new StringBuilder();
 		if(this.isNegative())
 			sb.append("-");
-		
-		if(this.getPrecision() >= this.getData().length){ //data then append 0s at end. 
+		if (this.getPrecision() == 0) {
+			for (int i = this.getData().length - 1; i >= 0; i--) {
+				sb.append(this.getData()[i]);
+			}
+		}
+		else if(this.getPrecision() > this.getData().length - 1){ 
 			sb.append(".");
 			for(int i = this.getPrecision()-1; i >= 0; i--){
 				if(i > this.getData().length-1){
 					sb.append("0");
 				}
 				else {
-					sb.append(this.data[i]);
+					sb.append(this.getData()[i]);
 				}
 			}
-			return sb.toString();
+
 		}
-		
-		else if(this.getPrecision() < this.getData().length){ //over flow data goes past decimal point
-			boolean leadingZero = true; //
+		else if(this.getPrecision() < this.getData().length - 1){ //overflow data goes past decimal point
+			boolean leadingZero = true;
+			int currentZero = 0;
+			for(int i = this.getData().length - 1;i >= 0; i--){
+				if(leadingZero){
+					if(leadingZero && ((this.getData()[i] != 0)||(this.getPrecision()==i))){
+						leadingZero = false;
+						if(this.getPrecision()-1==i){
+							sb.append(".");
+						}
+						i+= currentZero -1;
+						if(this.getData()[i]-1==0){
+							sb.append(".");
+						}
+					}
+					else{
+						currentZero++;
+					}
+				}
+				else{
+					if(this.getPrecision() == i){
+						sb.append(this.getData()[i]+".");
+					}
+					else if(this.getPrecision() != i){
+						sb.append(this.getData()[i]);
+					}
+
+				}
+			}
+		}
+		else{
+			sb.append(".");
+			for (int i = this.getData().length - 2; i >= 0; i--) {
+				sb.append(this.getData()[i]);
+			}
 		}
 
+		return sb.toString();
 	}
+	/*
+ public static int compare(RealNumber value1, RealNumber value2) {
 
-	public static int compare(RealNumber value1, RealNumber value2) {
-		
-	}
+ }
 
-	public int compareTo(RealNumber value) {
+ public int compareTo(RealNumber value) {
 
-	}
-
+ }
+	 */
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(Object o) throws ClassCastException{
+		if (!(o instanceof RealNumber)){
+			throw new ClassCastException();
+		}
+		return this.toString().equals(o.toString());
 
 	}
 
 	public static RealNumber add(RealNumber value1, RealNumber value2) {
-
+		int precision;
+		boolean isNegative = false;
+		byte[] addData;
+		if (value1.getPrecision() >=value2.getPrecision()){
+			precision = value1.getPrecision();
+			
+		}
+		else{
+			precision = value2.getPrecision();
+		}
+		if(value1.getData().length-value1.getPrecision() >= value2.getData().length-value2.getPrecision()){
+			addData = new byte[value1.getData().length + precision];
+		}
+		else{
+			addData = new byte[value2.getData().length + precision];
+		}
+		for(int i = addData.length - 1; i >= 0; i--){
+			
+		}
+		addData[0]=0;
+		return new RealNumber(precision,isNegative,addData[]);
 	}
-
+	
+/*
 	public static RealNumber subtract(RealNumber value1, RealNumber value2) {
 
 	}
@@ -114,4 +184,5 @@ public class RealNumber {
 	public static RealNumber squareRoot(RealNumber value) {
 
 	}
+*/
 }
