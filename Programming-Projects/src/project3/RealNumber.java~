@@ -20,12 +20,12 @@ public class RealNumber {
 	 */
 	private byte[] data;
 	/*
-	public static void main(String[] args)
-	{ 
-		RealNumber test = new RealNumber(4, false, new byte[]{1,8,9,9,8,7});
-		RealNumber test2 = new RealNumber(4, false, new byte[]{1,2,1,9,9,8,8});
-		System.out.println(RealNumber.add(test, test2));
-	}
+ public static void main(String[] args)
+ { 
+  RealNumber test = new RealNumber(4, false, new byte[]{1,8,9,9,8,7});
+  RealNumber test2 = new RealNumber(4, false, new byte[]{1,2,1,9,9,8,8});
+  System.out.println(RealNumber.add(test, test2));
+ }
 	 */
 	/**
 	 * Primary constructor using an array as input data
@@ -220,7 +220,7 @@ public class RealNumber {
 		System.out.println(addData.length);
 		if(greaterRealnumber){
 			//Loops through data taking in the fact the value1 >= value2
-			for(int i1 = addData.length - 2,i2 = i1 - (i1 - value2.getData().length-1); i1 >= 0; i1--,i2--){	  
+			for(int i1 = addData.length - 2,i2 = i1 - (i1 - value2.getData().length-1); i1 >= 0; i1--,i2--){   
 
 				if(i2>=0){
 					if((byte) (value1.getData()[i1]+ value2.getData()[i2])>9){
@@ -238,12 +238,12 @@ public class RealNumber {
 		}
 		else{
 			//Loops through data taking in the fact the value1 < value2
-			for(int i2 = addData.length - 2,i1 = i2 - (i2 - value1.getData().length-1); i2 >= 0; i1--,i2--){	  
+			for(int i2 = addData.length - 2,i1 = i2 - (i2 - value1.getData().length-1); i2 >= 0; i1--,i2--){   
 
 				if(i2>=0){
 					//if((byte) (value1.getData()[i1]+ value2.getData()[i2])>9){
-					//	addData[i2+1]++;
-					//	addData[i2] = (byte) (value1.getData()[i1]+ value2.getData()[i2]-10);
+					// addData[i2+1]++;
+					// addData[i2] = (byte) (value1.getData()[i1]+ value2.getData()[i2]-10);
 					//} 
 					//else{
 					addData[i2] = (byte) (value1.getData()[i1]+ value2.getData()[i2]);
@@ -254,7 +254,7 @@ public class RealNumber {
 				}
 			}
 		}
-		return new RealNumber(precision,isNegative,addData[]);
+		//  return new RealNumber(precision,isNegative,addData[]);
 	}
 
 
