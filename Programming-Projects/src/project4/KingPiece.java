@@ -1,0 +1,81 @@
+/**
+ * 
+ */
+package project4;
+import java.awt.*;
+import javax.swing.*;
+
+import project4.ChessGame.*;
+/**
+ * @author joshreichman
+ *
+ */
+public class KingPiece implements ChessPiece{
+ private Color pieceColor;
+ private String label;
+ private Icon icon;
+ private int row;
+ private int column;
+ 
+ public KingPiece(ChessBoard board, Color color, String label, Icon icon, ChessGame.Side side,int row,int column){
+  
+ }
+ 
+ public void setColor(Color colorInput){
+  pieceColor = colorInput;
+ }
+ @Override
+ public Color getColor(){
+  return pieceColor;
+ }
+ @Override
+ public String getLabel(){
+  return label;
+ }
+ @Override
+ public Icon getIcon(){
+  return icon;
+ }
+ @Override
+ public ChessBoard getChessBoard() {
+  // TODO Auto-generated method stub
+  return null;
+ }
+ @Override
+ public Side getSide() {
+  // TODO Auto-generated method stub
+  return ChessGame.Side;
+ }
+ @Override
+ public int getRow() {
+  // TODO Auto-generated method stub
+  return row;
+ }
+ @Override
+ public int getColumn() {
+  // TODO Auto-generated method stub
+  return column;
+ }
+ @Override
+ public boolean isLegalNonCaptureMove(int row, int column) {
+  // TODO Auto-generated method stub
+  return false;
+ }
+ @Override
+ public boolean isLegalCaptureMove(int row, int column) {
+  // TODO Auto-generated method stub
+  return false;
+ }
+ @Override
+ public boolean isLegalMove(int row, int column) {
+  // TODO Auto-generated method stub
+  return false;
+ }
+ @Override
+ public void moveDone() {
+  // TODO Auto-generated method stub
+  
+ }
+
+ 
+}
