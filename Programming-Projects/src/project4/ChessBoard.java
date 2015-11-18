@@ -17,6 +17,7 @@ public class ChessBoard implements ActionListener{
 	private JButton[][] grid;
 	private ChessPiece[][] pieces;
 	private ChessBoardDisplay display;
+	private boolean firstClick;
 
 	public ChessBoard(int rowInput, int columnsInput, ChessBoardDisplay chessDisplay){
 		try {
@@ -24,7 +25,7 @@ public class ChessBoard implements ActionListener{
 		}
 		catch (Exception e) {
 		}
-
+		firstClick = false;
 		rows = rowInput;
 		columns = columnsInput;
 		display = chessDisplay;
@@ -73,10 +74,11 @@ public class ChessBoard implements ActionListener{
 		for(int i =0; i < grid.length; i++){
 			for(int j = 0; j < grid[i].length; j++){
 				if(grid[i][j].equals(click)){
-					
+					if(!pieces[i][j].equals(null)){
+						ChessGame.this.legalPieceToPlay(pieces[i][j]);
+					}
 				}
 			}
 		}
 	}
-
-}
+	}

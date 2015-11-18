@@ -3,7 +3,7 @@ package project4;
 import java.awt.Color;
 import javax.swing.*;
 
-public class ChessPiece{
+public abstract class ChessPiece{
 	
 	 protected ChessBoard board;
 	 protected Color color;

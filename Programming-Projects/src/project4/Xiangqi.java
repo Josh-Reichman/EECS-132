@@ -2,24 +2,26 @@ package project4;
 
 import java.awt.Color;
 
-import javax.swing.Icon;
+
 
 public class Xiangqi implements ChessGame {
 	ChessBoard xiangqiGame;
-
+	ChessGame.Side currentTurn;
+	public static void main(String[] args){
+		Xiangqi game = new Xiangqi();
+		
+	}
 	Xiangqi(){
 		xiangqiGame = new ChessBoard(10,9,new XiangqiDisplay());
+		currentTurn = Side.NORTH;
 		xiangqiGame.addPiece(new KingPiece(xiangqiGame, Color.RED, null, ChessGame.Side.NORTH,0,4), 0,4) ;
 	}
-	public static void main(String[] args){
-		new Xiangqi();
-	}
+
 	
 	
 	@Override
 	public boolean legalPieceToPlay(ChessPiece piece) {
-		// TODO Auto-generated method stub
-		return false;
+		return piece.side.equals(currentTurn);
 	}
 	@Override
 	public boolean makeMove(KingPiece piece, int row, int column) {
