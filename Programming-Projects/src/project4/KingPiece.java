@@ -10,23 +10,24 @@ import project4.ChessGame.*;
  * @author joshreichman
  *
  */
-public class KingPiece implements ChessPiece{
- private Color pieceColor;
- private String label;
- private Icon icon;
- private int row;
- private int column;
+public class KingPiece extends ChessPiece{
  
- public KingPiece(ChessBoard board, Color color, String label, Icon icon, ChessGame.Side side,int row,int column){
-  
+ public KingPiece(ChessBoard board, Color color, Icon icon, ChessGame.Side side,int row,int column){
+	 this.board=board;
+	 this.color=color;
+	 this.label="K";
+	 this.icon=icon;
+	 this.side=side;
+	 this.row=row;
+	 this.column=column;
  }
  
  public void setColor(Color colorInput){
-  pieceColor = colorInput;
+  color = colorInput;
  }
  @Override
  public Color getColor(){
-  return pieceColor;
+  return color;
  }
  @Override
  public String getLabel(){
@@ -39,12 +40,12 @@ public class KingPiece implements ChessPiece{
  @Override
  public ChessBoard getChessBoard() {
   // TODO Auto-generated method stub
-  return null;
+  return board;
  }
  @Override
  public Side getSide() {
   // TODO Auto-generated method stub
-  return ChessGame.Side;
+  return side;
  }
  @Override
  public int getRow() {
@@ -57,25 +58,46 @@ public class KingPiece implements ChessPiece{
   return column;
  }
  @Override
+ public boolean isLegalMove(int row, int column) {
+  if(board.hasPiece(row, column)){
+	  return false;
+  }
+  else{
+	  return true;
+  }
+ }
+ @Override
  public boolean isLegalNonCaptureMove(int row, int column) {
-  // TODO Auto-generated method stub
-  return false;
+	 if(!board.hasPiece(row, column)){
+		 if(getSide().equals(Side.NORTH)){
+			 if(row <= 3 && column > 3 && column < 7){
+				 return true;
+			 }
+			 else{
+				 return false;
+			 }
+		 }
+		 else{ //(getSide().equals(Side.SOUTH))
+			 if(row >= 7 && column > 3 && column < 7){
+				 return true;
+			 }
+			 else{
+				 return false;
+			 }
+		 }
+	 }
+	 else{
+		 return false;
+	 }
  }
  @Override
  public boolean isLegalCaptureMove(int row, int column) {
   // TODO Auto-generated method stub
   return false;
  }
+
  @Override
- public boolean isLegalMove(int row, int column) {
-  // TODO Auto-generated method stub
-  return false;
- }
- @Override
- public void moveDone() {
-  // TODO Auto-generated method stub
-  
+ public void moveDone() {  
  }
 
- 
 }

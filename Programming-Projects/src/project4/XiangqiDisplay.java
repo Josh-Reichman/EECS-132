@@ -2,7 +2,6 @@
  * 
  */
 package project4;
-import java.awt.*;
 
 import javax.swing.*;
 
@@ -29,6 +28,14 @@ public class XiangqiDisplay implements ChessBoardDisplay {
 	public void highlightSquare(JButton jButn, int row, int column, boolean highlighted, ChessPiece piece){
 		if(highlighted){
 			jButn.setBackground(java.awt.Color.YELLOW);
+		}
+		else{
+			if(piece.equals(null)){
+				this.displayEmptySquare(jButn,row,column);
+			}
+			else{
+				this.displayFilledSquare(jButn, row, column, piece);
+			}
 		}
 	}
 }
