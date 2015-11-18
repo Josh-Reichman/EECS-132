@@ -24,7 +24,7 @@ public class Xiangqi implements ChessGame {
 		return piece.side.equals(currentTurn);
 	}
 	@Override
-	public boolean makeMove(KingPiece piece, int row, int column) {
+	public boolean makeMove(ChessPiece pieces, int row, int column) {
 		// TODO Auto-generated method stub
 		return false;
 	}
