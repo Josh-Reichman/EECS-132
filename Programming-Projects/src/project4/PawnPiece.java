@@ -10,9 +10,9 @@ import project4.ChessGame.*;
 
 /**
  * @author Josh Reichman
- * code for the king
+ * code for the pawn
  */
-public class KingPiece extends ChessPiece {
+public class PawnPiece extends ChessPiece {
 	/**
 	 * @param board
 	 * @param color
@@ -20,12 +20,12 @@ public class KingPiece extends ChessPiece {
 	 * @param side
 	 * @param row
 	 * @param column
-	 * Creates a ChessPiece that is a King
+	 * Creates a ChessPiece that is a Pawn
 	 */
-	public KingPiece(ChessBoard board, Color color, Icon icon, ChessGame.Side side, int row, int column) {
+	public PawnPiece(ChessBoard board, Color color, Icon icon, ChessGame.Side side, int row, int column) {
 		this.board = board;
 		this.color = color;
-		this.label = "K";
+		this.label = "P";
 		this.icon = icon;
 		this.side = side;
 		this.row = row;

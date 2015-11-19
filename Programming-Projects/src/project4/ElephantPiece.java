@@ -10,9 +10,9 @@ import project4.ChessGame.*;
 
 /**
  * @author Josh Reichman
- * code for the king
+ * code for the elephant
  */
-public class KingPiece extends ChessPiece {
+public class ElephantPiece extends ChessPiece {
 	/**
 	 * @param board
 	 * @param color
@@ -20,12 +20,12 @@ public class KingPiece extends ChessPiece {
 	 * @param side
 	 * @param row
 	 * @param column
-	 * Creates a ChessPiece that is a King
+	 * Creates a ChessPiece that is an Elephant
 	 */
-	public KingPiece(ChessBoard board, Color color, Icon icon, ChessGame.Side side, int row, int column) {
+	public ElephantPiece(ChessBoard board, Color color, Icon icon, ChessGame.Side side, int row, int column) {
 		this.board = board;
 		this.color = color;
-		this.label = "K";
+		this.label = "E";
 		this.icon = icon;
 		this.side = side;
 		this.row = row;
@@ -65,13 +65,13 @@ public class KingPiece extends ChessPiece {
 	public boolean isLegalNonCaptureMove(int row, int column) {
 		if (!board.hasPiece(row, column)) {
 			if (getSide().equals(Side.NORTH)) {
-				if (row <= 3 && column > 3 && column < 7) {
+				if (row <= 5) {
 					return true;
 				} else {
 					return false;
 				}
 			} else { // (getSide().equals(Side.SOUTH))
-				if (row >= 7 && column > 3 && column < 7) {
+				if (row >= 6) {
 					return true;
 				} else {
 					return false;

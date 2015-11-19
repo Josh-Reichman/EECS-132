@@ -10,9 +10,9 @@ import project4.ChessGame.*;
 
 /**
  * @author Josh Reichman
- * code for the king
+ * code for the cannon
  */
-public class KingPiece extends ChessPiece {
+public class CannonPiece extends ChessPiece {
 	/**
 	 * @param board
 	 * @param color
@@ -20,12 +20,12 @@ public class KingPiece extends ChessPiece {
 	 * @param side
 	 * @param row
 	 * @param column
-	 * Creates a ChessPiece that is a King
+	 * Creates a ChessPiece that is a Cannon
 	 */
-	public KingPiece(ChessBoard board, Color color, Icon icon, ChessGame.Side side, int row, int column) {
+	public CannonPiece(ChessBoard board, Color color, Icon icon, ChessGame.Side side, int row, int column) {
 		this.board = board;
 		this.color = color;
-		this.label = "K";
+		this.label = "C";
 		this.icon = icon;
 		this.side = side;
 		this.row = row;
@@ -41,6 +41,7 @@ public class KingPiece extends ChessPiece {
 		else // South
 			setColor(Color.WHITE);
 	}
+
 	/**
 	 * @param row
 	 * @param column
@@ -89,7 +90,6 @@ public class KingPiece extends ChessPiece {
 	 */
 	@Override
 	public boolean isLegalCaptureMove(int row, int column) {
-
 		return false;
 	}
 
